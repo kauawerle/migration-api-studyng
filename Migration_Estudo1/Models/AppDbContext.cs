@@ -15,7 +15,7 @@ namespace Migration_Estudo1.Models
         }
 
         public DbSet<Cliente> Cliente { get; set; }
-        //public DbSet<Pedido> PedidoClientes { get; set; }
+        public DbSet<Pedido> PedidoClientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
