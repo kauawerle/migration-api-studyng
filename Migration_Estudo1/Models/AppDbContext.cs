@@ -20,20 +20,21 @@ namespace Migration_Estudo1.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<Pedido>()
-            //    .HasKey(p => p.PedidoId);
 
-            //modelBuilder.Entity<Pedido>()
-            //    .Property(p => p.PedidoId)
-            //      .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Pedido>()
+                .HasKey(p => p.PedidoId);
 
-            //modelBuilder.Entity<Pedido>()
-            //   .Property(p => p.Item)
-            //     .HasMaxLength(200);
+            modelBuilder.Entity<Pedido>()
+                .Property(p => p.PedidoId)
+                  .ValueGeneratedOnAdd();
 
-            //modelBuilder.Entity<Pedido>()
-            //   .Property(p => p.Preco)
-            //     .HasColumnType("decimal(18,2");
+            modelBuilder.Entity<Pedido>()
+               .Property(p => p.Item)
+                 .HasMaxLength(200);
+
+            modelBuilder.Entity<Pedido>()
+               .Property(p => p.Preco)
+                 .HasColumnType("decimal(18,2");
 
             //modelBuilder.Entity<Pedido>()
             //   .Property(p => p.Data)

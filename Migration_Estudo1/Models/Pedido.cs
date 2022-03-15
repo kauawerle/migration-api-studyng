@@ -16,8 +16,8 @@ namespace Migration_Estudo1.Models
         public string Item { get; set; }
         public int Quantidade { get; set; }
 
-        //[Column("PrecoUnitario")]
-        //public decimal Preco { get; set; }
+        [Column("PrecoUnitario")]
+        public decimal Preco { get; set; }
 
         //[Column("DataPedido")]
         //public DateTime Data { get; set; }
