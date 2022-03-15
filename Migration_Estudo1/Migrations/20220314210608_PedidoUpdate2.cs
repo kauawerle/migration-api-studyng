@@ -9,7 +9,7 @@ namespace Migration_Estudo1.Migrations
             migrationBuilder.AddColumn<decimal>(
                 name: "PrecoUnitario",
                 table: "Pedidos",
-                type: "decimal(18,2",
+                type: "decimal(18,2)",
                 nullable: false,
                 defaultValue: 0m);
         }
