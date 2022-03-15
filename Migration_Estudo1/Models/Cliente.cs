@@ -13,6 +13,8 @@ namespace Migration_Estudo1.Models
 
         public string Nome { get; set; }
 
+        public int Idade { get; set; }
+
         public ICollection<Pedido> Pedidos { get; set; }
 
     }
