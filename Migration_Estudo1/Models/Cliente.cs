@@ -14,5 +14,7 @@ namespace Migration_Estudo1.Models
         [MaxLength(100)]
         public string Nome { get; set; }
 
+        public ICollection<Pedido> Pedidos { get; set; }
+
     }
 }

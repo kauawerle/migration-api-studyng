@@ -34,12 +34,19 @@ namespace Migration_Estudo1.Models
 
             modelBuilder.Entity<Pedido>()
                .Property(p => p.Preco)
-                 .HasColumnType("decimal(18,2");
+                 .HasColumnType("decimal(18,2)");
 
-            //modelBuilder.Entity<Pedido>()
-            //   .Property(p => p.Data)
-            //     .HasColumnName("DataPedido")
-            //     .HasColumnType("datetime2");
+            modelBuilder.Entity<Pedido>()
+               .Property(p => p.Data)
+                 .HasColumnName("DataPedido")
+                 .HasColumnType("datetime2");
+
+            //um-para-muitos
+            modelBuilder.Entity<Cliente>()
+                .HasMany(p => p.Pedidos)
+                    .WithOne(c => c.Cliente)
+                        .OnDelete(DeleteBehavior.Cascade);
+
 
         }
     }

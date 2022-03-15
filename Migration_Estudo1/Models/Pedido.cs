@@ -19,7 +19,10 @@ namespace Migration_Estudo1.Models
         [Column("PrecoUnitario")]
         public decimal Preco { get; set; }
 
-        //[Column("DataPedido")]
-        //public DateTime Data { get; set; }
+        [Column("DataPedido")]
+        public DateTime Data { get; set; }
+
+        public int ClienteId { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }
