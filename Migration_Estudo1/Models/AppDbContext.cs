@@ -21,6 +21,18 @@ namespace Migration_Estudo1.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Cliente>()
+                .HasKey(p => p.ClienteId);
+
+            modelBuilder.Entity<Cliente>()
+                .Property(p => p.ClienteId)
+                  .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Cliente>()
+               .Property(p => p.Nome)
+                 .HasMaxLength(100)
+                   .IsRequired();
+
             modelBuilder.Entity<Pedido>()
                 .HasKey(p => p.PedidoId);
 
@@ -30,7 +42,8 @@ namespace Migration_Estudo1.Models
 
             modelBuilder.Entity<Pedido>()
                .Property(p => p.Item)
-                 .HasMaxLength(200);
+                 .HasMaxLength(200)
+                   .IsRequired();
 
             modelBuilder.Entity<Pedido>()
                .Property(p => p.Preco)
