@@ -12,17 +12,17 @@ namespace Migration_Estudo1.Models
     {
         [Key]
         public int PedidoId { get; set; }
-        [MaxLength(200)]
+
         public string Item { get; set; }
+
         public int Quantidade { get; set; }
 
-        [Column("PrecoUnitario")]
         public decimal Preco { get; set; }
 
-        [Column("DataPedido")]
         public DateTime Data { get; set; }
 
         public int ClienteId { get; set; }
+
         public virtual Cliente Cliente { get; set; }
     }
 }

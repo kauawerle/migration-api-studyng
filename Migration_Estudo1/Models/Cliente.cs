@@ -11,7 +11,6 @@ namespace Migration_Estudo1.Models
         [Key]
         public int ClienteId { get; set; }
 
-        [MaxLength(100)]
         public string Nome { get; set; }
 
         public ICollection<Pedido> Pedidos { get; set; }
