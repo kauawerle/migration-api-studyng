@@ -1,9 +1,16 @@
 # Como utilizar migrations
 
- - Utilizando o visual studio 19 baixe o Core Net 3.5
- - Vá para tools e em Gerenciador de pacotes Nugets
- - Baixe Microsoft.EntityFrameworkCore.SqlServer na versão 3.1.5
- - Microsoft.EntityFrameworkCore.Tools na versão 3.5
+- Utilizando o visual studio 19 baixe o Core Net 3.5
+- Vá para tools e em Gerenciador de pacotes Nugets
+- Baixe Microsoft.EntityFrameworkCore.SqlServer na versão 3.1.5
+- Microsoft.EntityFrameworkCore.Tools na versão 3.5
+
+
+ - Criando uma migration:
+    - Vá para a aba Tools e depois vá para o Gerenciador de pacotes Nugets e abra o console de gerenciador de pacotes. Ao abrir o terminal utilize o comando add-migration nome-da-migration.
+    - Depois que tudo der certo volte no terminal e adicione o comanda update-database.
+
+<br>
 
 - Depois de instalado crie uma pasta na raiz de seu projeto chamada Models com o arquivo Cliente.cs e um arquivo chamado AppDbContext com os respectivos codigos:
 
@@ -55,6 +62,7 @@ namespace Migration_Estudo1.Models
 }
 ```
 
+
 - Adicionando um arquivo Pedido.cs iremos colocar:
 
 ```
@@ -81,8 +89,7 @@ namespace Migration_Estudo1.Models
 }
 ```
 
->Perceba que não foi colocado nenhu atributo de MaxLength ou tipamos qual tipo de variável seria, iremos alterar o codigo do AppDbContext para colocar essas mudanças:
-
+>Perceba que não foi colocado nenhu atributo de MaxLength ou tipamos qual tipo de variável, iremos alterar o codigo do AppDbContext para colocar essas mudanças:
 
 ```
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -126,7 +133,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         }
 ```
 
-- Cliente.cs:
+>- Cliente.cs removemos os atributos de Max-Length e deixamos assim:
 
 ```
 public class Cliente
@@ -138,5 +145,36 @@ public class Cliente
 
         public ICollection<Pedido> Pedidos { get; set; }
 
+    }
+```
+
+----------------------------------------------------------------
+<br>
+
+## Criando uma Procedure
+
+
+
+> Para criar uma procedure basta criar uma migration sem nenhuma alteração, ir para a última migration que você criou e adicionar esse codigo:
+
+```
+ protected override void Up(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.AddColumn<int>(
+            name: "Idade",
+            table: "Cliente",
+            nullable: false,
+            defaultValue: 0);
+
+        migrationBuilder.Sql(@"CREATE PROCEDURE IdadeProcedure @Idade as Int AS SELECT * FROM Cliente Where Idade > @idade");
+    }
+
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropColumn(
+            name: "Idade",
+            table: "Cliente");
+
+         migrationBuilder.Sql(@"DROP PROCEDURE IdadeProcedure");
     }
 ```
