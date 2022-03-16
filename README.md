@@ -89,7 +89,7 @@ namespace Migration_Estudo1.Models
 }
 ```
 
->Perceba que não foi colocado nenhu atributo de MaxLength ou tipamos qual tipo de variável, iremos alterar o codigo do AppDbContext para colocar essas mudanças:
+>Perceba que não foi colocado nenhum atributo de MaxLength ou tipamos qual tipo de variável, iremos alterar o codigo do AppDbContext para colocar essas mudanças:
 
 ```
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -147,6 +147,10 @@ public class Cliente
 
     }
 ```
+
+- Depois rode o comando add-migration NomeDaSuaMigration
+- E Atualize sua database utilizando update-database
+
 
 ----------------------------------------------------------------
 <br>
